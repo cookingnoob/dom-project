@@ -1,20 +1,51 @@
-const products = [{
-  name: 'HP Essentials 255 G8 AMD',
-  price: 289,
-  stars: 4,
-  reviews: 250,
-  seller: 'PcComponentes',
-  image: 'https://thumb.pccomponentes.com/w-300-300/articles/1005/10057282/1639-hp-essential-255-g8-amd-3020e-8gb-256gb-ssd-156.jpg'
-},
-  // Añade aquí al menos 9 productos más para tener un total de 10 productos
-  // puedes cambiar los campos de cada objeto si es necesario para tu diseño... 
-];
+const POKEMON_URL = 'https://pokeapi.co/api/v2/pokemon/';
+// const searchUrl = `${POKEMON_URL}pokemon/pikachu`;
+const articleSection = document.querySelector('#cardsSection');
+1,2,3,4,5,6,7,8,9,10
 
-const renderProducts = () => {
 
+const pokemonTemplate = () => {
+  return `
+  <div class="cardContainer">
+  <img
+    src="${pokemonData.image}"
+    alt="">
+  <div class="announcements">
+    <p class="name">${pokemonData.name}</p>
+    <p class="price">${pokemonData.id}</p>
+    <p class="seller">${pokemonData.type[0].type.name}</p>
+    <img src="" alt="type color">
+  </div>
+  <input type="checkbox" name="" id=""> comprar
+</div>
+`;
 }
 
-products.forEach(product => console.log(product))
+const renderPokemon = () => {
+  const template = pokemonTemplate();
+  articleSection.innerHTML += template;
+};
+
+
+
+for (i = 1; i < 11; i++){
+  let searchUrl = `${POKEMON_URL}${i}`
+  fetch(searchUrl)
+  .then((res) => res.json())
+  .then((response) => {
+    console.log(response)
+    pokemonData = {
+      id: response.id,
+      name: response.name,
+      type: response.types,
+      image: response.sprites.front_default,
+    }
+    renderPokemon()
+  })
+}
+
+
+
 
 
 
@@ -26,3 +57,28 @@ products.forEach(product => console.log(product))
       //limpia el DOM
       //pasa los valores que se usaran en el loop, el de inicio y el de fin
       //crea 10 objetos que invocaran a la funcion de render
+
+
+
+
+
+//leccion async
+      // const main = async () => {
+      //   console.log('pedimos un pokemon');
+      //   let pokemon = null;
+      //   try {
+      //     const res = await fetch('https://pokeapi.co/api/v2/pokemon/pikachu')
+      //     const response = await res.json();
+      //     pokemon = response
+      //     console.log('respuesta: ', response);
+      //   } catch (error) {
+      //     console.log('error:', error)
+      //   }
+      
+      
+      //   console.log(`ya tengo el pokemon`, pokemon)
+      // }
+      
+      // main().then(() => {
+      //   console.log('la función ha terminado')
+      // })
