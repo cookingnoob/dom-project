@@ -1,0 +1,48 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+header{
+height: 10vh;
+background-color: red;
+}
+nav{
+height: 5vh;
+background-color: aqua;
+display: flex;
+justify-content: center;
+}
+nav > input{
+  width: 300px;
+}
+main{
+display: flex;
+}
+article{
+width: 85vw;
+height:80vh;
+background-color: yellow;
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+}
+.cardContainer{
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+.cardContainer >img{
+  width: 5rem;
+}
+aside{
+width: 15vw;
+height:80vh;
+background-color: blue;
+}
+footer{
+  height: 5vh;
+  background-color: blueviolet;
+}
